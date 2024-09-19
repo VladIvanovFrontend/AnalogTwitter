@@ -12,15 +12,12 @@ const PORT = process.env.PORT || 5000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Путь к файлу с пользователями
 const usersFilePath = path.join(__dirname, 'users.json');
 
-// Миддлвары
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Настройка multer для загрузки фотографий
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'uploads/');
@@ -31,10 +28,8 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-// Настройка статической директории
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Роут для регистрации
 app.post('/register', upload.single('photo'), (req, res) => {
     const { username, password } = req.body;
     const photo = req.file ? req.file.path : null;
@@ -43,7 +38,6 @@ app.post('/register', upload.single('photo'), (req, res) => {
         return res.status(400).json({ message: 'Пожалуйста, заполните все обязательные поля.' });
     }
 
-    // Чтение файла с пользователями
     fs.readFile(usersFilePath, 'utf-8', (err, data) => {
         if (err) {
             return res.status(500).json({ message: 'Ошибка при чтении файла пользователей.' });
@@ -67,7 +61,6 @@ app.post('/register', upload.single('photo'), (req, res) => {
     });
 });
 
-// Роут для входа
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
@@ -87,7 +80,6 @@ app.post('/login', (req, res) => {
     });
 });
 
-// Роут для главной страницы
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
