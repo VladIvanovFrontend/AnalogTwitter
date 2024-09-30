@@ -1,0 +1,86 @@
+.container {
+    background-color: rgba(196, 196, 196, 1.00);
+    width: 100%;
+    height: calc(100vh - 130px);
+    display: flex;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.auth__userName {
+    width: 440px;
+    height: 50px;
+    background-color: white;
+    border-radius: 10px;
+    font-family: Inter, sans-serif;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    margin-top: calc(115px / 2 - 20px);
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.auth__text {
+    margin-left: 15px;
+}
+
+.auth__button {
+    width: 248px;
+    height: 50px;
+    border: 0;
+    background-color: white;
+    border-radius: 10px;
+    align-self: flex-end;
+    position: absolute;
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+.auth__button:hover {
+    transform: scale(0.99);
+}
+
+.container_user {
+    display: flex;
+    position: sticky;
+    top: 0;
+    background-color: rgba(196, 196, 196, 1.00);
+    height: calc(100vh - (65px + 65px));
+    align-items: flex-start;
+}
+
+.container__post {
+    background-color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    height: calc(100vh - 130px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.article__post, .article__input, .article__null {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.post, .post__input {
+    width: 100%;
+}
+
+.container__post {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.container__post::-webkit-scrollbar {
+    display: none;
+}

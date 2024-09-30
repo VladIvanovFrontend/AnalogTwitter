@@ -1,0 +1,7 @@
+.container {
+        background-color: rgba(196, 196, 196, 1.00);
+        width: 1200px;
+        height: calc(100vh - 130px);
+        position: sticky;
+        top: 65px;
+}
